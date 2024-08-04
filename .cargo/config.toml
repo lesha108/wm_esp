@@ -1,0 +1,19 @@
+[target.xtensa-esp32-none-elf]
+runner = "espflash flash --monitor"
+
+
+[env]
+ESP_LOGLEVEL="INFO"
+SSID = "AP"
+PASSWORD = "password"
+
+[build]
+rustflags = [
+  "-C", "link-arg=-nostartfiles",
+  "-C", "link-arg=-Trom_functions.x",
+]
+
+target = "xtensa-esp32-none-elf"
+
+[unstable]
+build-std = ["core"]
